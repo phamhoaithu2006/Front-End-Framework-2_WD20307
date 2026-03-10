@@ -48,9 +48,9 @@ function Lab1() {
 
   return (
     <>
+      {/* Bài 1 */}
       <Layout className="bg-white rounded-lg shadow">
 
-        {/* Sidebar */}
         <Sider>
           <Menu
             theme="dark"
@@ -65,15 +65,13 @@ function Lab1() {
 
         <Layout>
 
-          {/* Header */}
           <Header style={{ color: "white", fontSize: 18 }}>
             WEB2091 Dashboard
           </Header>
 
-          {/* Content */}
           <Content style={{ padding: 24 }}>
 
-            {/* FORM */}
+            {/* Bài 2 */}
             <div className="max-w-md mb-10">
               <h2 className="text-xl font-bold mb-4">
                 Form Đăng ký
@@ -112,12 +110,13 @@ function Lab1() {
               </Form>
             </div>
 
-            {/* USER TABLE */}
+            {/* Bài 3 */}
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-bold">
                 Danh sách User
               </h2>
 
+              {/* Bài 4 */}
               <Button type="primary" onClick={() => setOpen(true)}>
                 Thêm User
               </Button>
@@ -130,7 +129,6 @@ function Lab1() {
         </Layout>
       </Layout>
 
-      {/* MODAL */}
       <Modal
         title="Thêm User"
         open={open}
