@@ -1,9 +1,19 @@
 import { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { Layout } from "antd";
+import { Form, Input, Button } from "antd";
+import Lab1 from "./pages/Lab1";
+
+const { Header, Content, Footer } = Layout;
+
+const onFinish = (values: any) => {
+  console.log(values);
+};
 
 function App() {
   return (
     <>
+      {/* NAVBAR */}
       <nav className="bg-blue-600 text-white shadow">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <Link to="#" className="text-xl font-semibold">
@@ -34,8 +44,62 @@ function App() {
       </nav>
 
       {/* MAIN CONTENT */}
-      <div className="max-w-6xl mx-auto mt-10 px-4 text-center">
-        <h1 className="text-4xl font-bold mb-4">Chào mừng đến với WEB2091</h1>
+      <div className="max-w-6xl mx-auto mt-10 px-4">
+        <h1 className="text-4xl font-bold mb-6 text-center">
+          Chào mừng đến với WEB2091
+        </h1>
+
+        {/* BUTTONS */}
+        <div className="flex flex-wrap justify-center gap-3 mb-8">
+          <Button type="primary">Click me</Button>
+          <Button type="primary">Click me</Button>
+          <Button type="primary">Click me</Button>
+          <Button type="primary">Click me</Button>
+          <Button type="primary">Click me</Button>
+        </div>
+
+        <Layout className="bg-white shadow rounded-lg overflow-hidden">
+
+          <Header style={{ color: "white" }}>
+            Header
+          </Header>
+
+          <Content style={{ padding: 20 }}>
+
+            {/* FORM */}
+            <div className="max-w-md mb-6">
+              <Form onFinish={onFinish} layout="vertical">
+                <Form.Item
+                  label="Email"
+                  name="email"
+                  rules={[{ required: true, message: "Nhập email" }]}
+                >
+                  <Input placeholder="Email" />
+                </Form.Item>
+
+                <Form.Item>
+                  <Button htmlType="submit" type="primary" block>
+                    Login
+                  </Button>
+                </Form.Item>
+              </Form>
+            </div>
+
+          </Content>
+
+          <Footer className="text-center">
+            Footer
+          </Footer>
+
+        </Layout>
+
+        <hr className="my-12" />
+
+        {/* LAB1 */}
+        <div className="mt-10">
+          <Lab1 />
+        </div>
+
       </div>
 
       <Toaster />
