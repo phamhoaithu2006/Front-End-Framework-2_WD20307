@@ -51,7 +51,7 @@ function Lab2() {
     {
       title: "Action",
       key: "action",
-      render: (_, record) => (
+      render: () => (
         <Space size="middle">
           <Button type="link">Edit</Button>
           <Popconfirm

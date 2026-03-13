@@ -3,24 +3,14 @@ import { Link } from "react-router-dom";
 import { Layout } from "antd";
 import { Form, Input, Button } from "antd";
 import Lab1 from "./pages/Lab1";
-import { Table } from "antd";
 import Lab2 from "./pages/Lab2";
+import Lab3 from "./pages/Lab3";
 
 const { Header, Content, Footer } = Layout;
 
 const onFinish = (values: any) => {
   console.log(values);
 };
-
-const columns = [
-  { title: "Name", dataIndex: "name" },
-  { title: "Age", dataIndex: "age" },
-];
-
-const data = [
-  { key: 1, name: "John", age: 25 },
-  { key: 2, name: "Anna", age: 30 },
-];
 
 function App() {
   return (
@@ -103,8 +93,6 @@ function App() {
             Footer
           </Footer>
 
-          <Table columns={columns} dataSource={data} />
-
         </Layout>
 
         <hr className="my-12" />
@@ -119,6 +107,13 @@ function App() {
         {/* LAB2 */}
         <div className="mt-10">
           <Lab2 />
+        </div>
+
+        <hr className="my-12" />
+
+        {/* LAB3 */}
+        <div className="mt-10">
+          <Lab3 />
         </div>
 
       </div>

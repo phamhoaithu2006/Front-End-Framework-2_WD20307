@@ -77,7 +77,7 @@ function Lab1() {
                 Form Đăng ký
               </h2>
 
-              <Form layout="vertical" onFinish={(values)=>console.log(values)}>
+              <Form layout="vertical" onFinish={(values) => console.log(values)}>
 
                 <Form.Item
                   label="Name"
