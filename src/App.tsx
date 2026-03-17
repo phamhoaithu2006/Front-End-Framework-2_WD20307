@@ -1,10 +1,11 @@
 import { Toaster } from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import { Layout } from "antd";
 import { Form, Input, Button } from "antd";
 import Lab1 from "./pages/Lab1";
 import Lab2 from "./pages/Lab2";
 import Lab3 from "./pages/Lab3";
+import StoryForm from "./pages/Lab4";
 
 const { Header, Content, Footer } = Layout;
 
@@ -53,23 +54,35 @@ function App() {
 
         {/* BUTTONS */}
         <div className="flex flex-wrap justify-center gap-3 mb-8">
-          <Button type="primary">Click me</Button>
-          <Button type="primary">Click me</Button>
-          <Button type="primary">Click me</Button>
-          <Button type="primary">Click me</Button>
+          <Link to="/lab1">
+            <Button type="primary">Lab 1</Button>
+          </Link>
+
+          <Link to="/lab2">
+            <Button type="primary">Lab 2</Button>
+          </Link>
+
+          <Link to="/lab3">
+            <Button type="primary">Lab 3</Button>
+          </Link>
+
+          <Link to="/lab4">
+            <Button type="primary">Lab 4</Button>
+          </Link>
+
           <Button type="primary">Click me</Button>
         </div>
 
         <Layout className="bg-white shadow rounded-lg overflow-hidden">
 
-          <Header style={{ color: "white" }}>
+          <Header className="text-center" style={{ color: "white" }}>
             Header
           </Header>
 
-          <Content style={{ padding: 20 }}>
+          <Content className="text-center" style={{ padding: 20 }}>
 
             {/* FORM */}
-            <div className="max-w-md mb-6">
+            {/* <div className="max-w-md mb-6">
               <Form onFinish={onFinish} layout="vertical">
                 <Form.Item
                   label="Email"
@@ -85,7 +98,7 @@ function App() {
                   </Button>
                 </Form.Item>
               </Form>
-            </div>
+            </div> */}
 
           </Content>
 
@@ -95,26 +108,12 @@ function App() {
 
         </Layout>
 
-        <hr className="my-12" />
-
-        {/* LAB1 */}
-        <div className="mt-10">
-          <Lab1 />
-        </div>
-
-        <hr className="my-12" />
-
-        {/* LAB2 */}
-        <div className="mt-10">
-          <Lab2 />
-        </div>
-
-        <hr className="my-12" />
-
-        {/* LAB3 */}
-        <div className="mt-10">
-          <Lab3 />
-        </div>
+        <Routes>
+          <Route path="/lab1" element={<Lab1 />} />
+          <Route path="/lab2" element={<Lab2 />} />
+          <Route path="/lab3" element={<Lab3 />} />
+          <Route path="/lab4" element={<StoryForm />} />
+        </Routes>
 
       </div>
 
