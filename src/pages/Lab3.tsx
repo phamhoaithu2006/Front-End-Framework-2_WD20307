@@ -4,18 +4,19 @@ import TextArea from "antd/es/input/TextArea";
 const onFinish = (values: any) => {
     console.log(values);
 
-  const box = document.getElementById("result");
-  if (box) {
-    box.innerHTML = `
+    const box = document.getElementById("result");
+    if (box) {
+        box.innerHTML = `
+    <div style="border:1px solid #ccc; padding:12px; border-radius:8px">
       <p><b>Title:</b> ${values.title}</p>
       <p><b>Slug:</b> ${values.slug}</p>
       <p><b>Category:</b> ${values.category}</p>
       <p><b>Content:</b> ${values.content}</p>
-      <img src="${values.image}" width="200"/>
-    `;
-  }
+      <img src="${values.image}" style="max-width:100%; border-radius:6px"/>
+    </div>
+  `;
+    }
 };
-
 
 function Lab3() {
     return (
@@ -43,7 +44,7 @@ function Lab3() {
 
                     <Form.Item>
                         <Button htmlType="submit" type="primary" block>
-                            Login
+                            Đăng nhập
                         </Button>
                     </Form.Item>
                 </Form>
@@ -100,7 +101,7 @@ function Lab3() {
                 </Form.Item>
 
                 <Form.Item>
-                    <Button type="primary" htmlType="submit">
+                    <Button htmlType="submit" type="primary" block>
                         Đăng ký
                     </Button>
                 </Form.Item>
@@ -110,9 +111,9 @@ function Lab3() {
             <div className="max-w-md mb-6">
                 <Form onFinish={onFinish} layout="vertical">
                     <Form.Item
-                        label="Tên sản phẩm"
+                        label="Tên"
                         name="name"
-                        rules={[{ required: true, message: "Nhập tên sản phẩm" }]}>
+                        rules={[{ required: true, message: "Nhập tên" }]}>
                         <Input />
                     </Form.Item>
 
@@ -174,11 +175,13 @@ function Lab3() {
                     <Input />
                 </Form.Item>
 
-                <Button type="primary" htmlType="submit">
-                    Submit
-                </Button>
+                <Form.Item>
+                    <Button htmlType="submit" type="primary" block>
+                        Thêm
+                    </Button>
+                </Form.Item>
 
-                 <div id="result" style={{ marginTop: 20 }}></div>
+                <div id="result" style={{ marginTop: 20 }}></div>
 
             </Form>
 

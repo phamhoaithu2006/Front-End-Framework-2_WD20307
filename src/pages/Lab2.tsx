@@ -77,9 +77,9 @@ function Lab2() {
 
   return (
     <>
-      <Table columns={columns1} dataSource={data1} />
-      <Table columns={columns2} dataSource={data2} pagination={{ pageSize: 3 }} />
-      <Table columns={columns3} dataSource={data3} />
+      Bài 1<Table columns={columns1} dataSource={data1} />
+      Bài 2<Table columns={columns2} dataSource={data2} pagination={{ pageSize: 3 }} />
+      Bài 3<Table columns={columns3} dataSource={data3} />
     </>
   )
 }

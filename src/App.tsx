@@ -108,6 +108,8 @@ function App() {
 
         </Layout>
 
+        <hr className="my-12" />
+
         <Routes>
           <Route path="/lab1" element={<Lab1 />} />
           <Route path="/lab2" element={<Lab2 />} />

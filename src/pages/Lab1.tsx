@@ -9,14 +9,14 @@ function Lab1() {
   const [data, setData] = useState([
     {
       key: "1",
-      name: "Nguyễn Văn A",
-      email: "a@gmail.com",
+      name: "Đào Tùng Lâm",
+      email: "Lam@gmail.com",
       role: "Admin",
     },
     {
       key: "2",
-      name: "Trần Văn B",
-      email: "b@gmail.com",
+      name: "Đào Tùng Sơn",
+      email: "Son@gmail.com",
       role: "User",
     },
   ]);
@@ -74,7 +74,7 @@ function Lab1() {
             {/* Bài 2 */}
             <div className="max-w-md mb-10">
               <h2 className="text-xl font-bold mb-4">
-                Form Đăng ký
+                Form đăng ký
               </h2>
 
               <Form layout="vertical" onFinish={(values) => console.log(values)}>
@@ -113,12 +113,12 @@ function Lab1() {
             {/* Bài 3 */}
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-bold">
-                Danh sách User
+                Danh sách user
               </h2>
 
               {/* Bài 4 */}
               <Button type="primary" onClick={() => setOpen(true)}>
-                Thêm User
+                Thêm user
               </Button>
             </div>
 
@@ -130,7 +130,7 @@ function Lab1() {
       </Layout>
 
       <Modal
-        title="Thêm User"
+        title="Thêm user"
         open={open}
         onCancel={() => setOpen(false)}
         footer={null}
@@ -156,7 +156,7 @@ function Lab1() {
           <Form.Item
             label="Role"
             name="role"
-            rules={[{ required: true, message: "Nhập role" }]}
+            rules={[{ required: true, message: "Nhập chức vụ" }]}
           >
             <Input />
           </Form.Item>
