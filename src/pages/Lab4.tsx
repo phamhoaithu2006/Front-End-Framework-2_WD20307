@@ -1,5 +1,5 @@
 import { Form, Input, Button, Checkbox, Select } from "antd";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -26,13 +26,23 @@ export default function StoryForm() {
         },
     });
 
+    const queryClient = useQueryClient();
+
     const mutation = useMutation({
         mutationFn: async (data: Story) => {
             const res = await axios.post("http://localhost:3000/stories", data);
             return res.data;
         },
-        onSuccess: () => toast.success("Thêm truyện thành công"),
-        onError: () => toast.error("Có lỗi xảy ra"),
+
+        onSuccess: () => {
+            toast.success("Thêm truyện thành công");
+
+            queryClient.invalidateQueries({ queryKey: ["getAllStories"] });
+        },
+
+        onError: () => {
+            toast.error("Có lỗi xảy ra");
+        },
     });
 
     const onFinish = (values: Story) => {

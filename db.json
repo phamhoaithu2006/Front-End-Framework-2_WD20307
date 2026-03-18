@@ -1,5 +1,14 @@
 {
-  "stories": [],
+  "stories": [
+    {
+      "title": "Naruto",
+      "author": "Kishimoto Masashi",
+      "image": "https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/474359Myx/anh-naruto-be-bong-dep_104804081.jpg",
+      "description": "Phát triển tâm lý nhân vật sâu sắc",
+      "createdAt": "11/12/2026",
+      "id": 1
+    }
+  ],
   "categories": [],
   "users": []
 }

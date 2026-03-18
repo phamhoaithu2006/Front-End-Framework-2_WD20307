@@ -6,6 +6,7 @@ import Lab1 from "./pages/Lab1";
 import Lab2 from "./pages/Lab2";
 import Lab3 from "./pages/Lab3";
 import StoryForm from "./pages/Lab4";
+import StoryList from "./pages/Lab5";
 
 const { Header, Content, Footer } = Layout;
 
@@ -70,6 +71,10 @@ function App() {
             <Button type="primary">Lab 4</Button>
           </Link>
 
+          <Link to="/lab5">
+            <Button type="primary">Lab 5</Button>
+          </Link>
+
           <Button type="primary">Click me</Button>
         </div>
 
@@ -115,6 +120,7 @@ function App() {
           <Route path="/lab2" element={<Lab2 />} />
           <Route path="/lab3" element={<Lab3 />} />
           <Route path="/lab4" element={<StoryForm />} />
+          <Route path="/lab5" element={<StoryList />} />
         </Routes>
 
       </div>
