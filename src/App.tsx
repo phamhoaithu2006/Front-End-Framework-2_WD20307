@@ -7,6 +7,7 @@ import Lab2 from "./pages/Lab2";
 import Lab3 from "./pages/Lab3";
 import StoryForm from "./pages/Lab4";
 import StoryList from "./pages/Lab5";
+import EditStory from "./pages/Lab6";
 
 const { Header, Content, Footer } = Layout;
 
@@ -121,6 +122,7 @@ function App() {
           <Route path="/lab3" element={<Lab3 />} />
           <Route path="/lab4" element={<StoryForm />} />
           <Route path="/lab5" element={<StoryList />} />
+          <Route path="/edit/:id" element={<EditStory />} />
         </Routes>
 
       </div>

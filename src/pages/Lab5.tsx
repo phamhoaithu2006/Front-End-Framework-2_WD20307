@@ -2,6 +2,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Table, Image, Button, Popconfirm, Input } from "antd";
 import axios from "axios";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function StoryList() {
     const [keyword, setKeyword] = useState("");
@@ -47,15 +48,20 @@ export default function StoryList() {
         {
             title: "Action",
             render: (_, record) => (
-                <Popconfirm
-                    title="Xác nhận xóa"
-                    description="Bạn có chắc chắn muốn xóa không?"
-                    okText="Có"
-                    cancelText="Không"
-                    onConfirm={() => handleDelete(record.id)}
-                >
-                    <Button danger>Xóa</Button>
-                </Popconfirm>
+                <>
+                    <Popconfirm
+                        title="Xác nhận xóa"
+                        description="Bạn có chắc chắn muốn xóa không?"
+                        okText="Có"
+                        cancelText="Không"
+                        onConfirm={() => handleDelete(record.id)}
+                    >
+                        <Button type="primary" danger>Xóa</Button>
+                    </Popconfirm>
+                    <Button type="primary">
+                        <Link to={`/edit/${record.id}`}>Sửa</Link>
+                    </Button>
+                </>
             ),
         }
     ];
