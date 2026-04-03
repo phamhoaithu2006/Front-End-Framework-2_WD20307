@@ -12,8 +12,8 @@ import StoryList from "./pages/Lab5";
 import EditStory from "./pages/Lab6";
 import Navbar from "./components/Header";
 
-import { ThemeProvider, ThemeContext } from "./context/ThemeContext";
-import { UserProvider } from "./context/UserContext";
+import { ThemeContext } from "./context/ThemeContext";
+import Register from "./pages/Register";
 
 const { Header, Content, Footer } = Layout;
 
@@ -45,6 +45,7 @@ function App() {
             <Link to="/lab3"><Button type="primary">Lab 3</Button></Link>
             <Link to="/lab4"><Button type="primary">Lab 4</Button></Link>
             <Link to="/lab5"><Button type="primary">Lab 5</Button></Link>
+            <Link to="/lab8"><Button type="primary">Lab 8</Button></Link>
           </div>
 
           <Layout
@@ -69,6 +70,7 @@ function App() {
             <Route path="/lab4" element={<StoryForm />} />
             <Route path="/lab5" element={<StoryList />} />
             <Route path="/edit/:id" element={<EditStory />} />
+            <Route path="/lab8" element={<Register />} />
           </Routes>
         </div>
 

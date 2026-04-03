@@ -1,20 +1,24 @@
 import { createContext, useState } from "react";
 
-type User = {
-    name: string;
-    avatar: string;
-}
+export const UserContext = createContext<any>(null);
 
-type UserContextType = {
-    user: User | null;
-    setUser: (user: User | null) => void;
-};
+export function UserProvider({ children }: any) {
+    const [user, setUser] = useState<any>(null);
 
-export const UserContext = createContext<UserContextType | null>(null);
+    const login = () => {
+        setUser({
+            name: "Admin User",
+            avatar: "https://api.dicebear.com/7.x/miniavs/svg?seed=1",
+        });
+    };
 
-export const UserProvider = ({ children }: { children: any }) => {
-    const [user, setUser] = useState<User | null>(null);
+    const logout = () => {
+        setUser(null);
+    };
+
     return (
-        <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>
+        <UserContext.Provider value={{ user, login, logout }}>
+            {children}
+        </UserContext.Provider>
     );
-} 
+}

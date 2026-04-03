@@ -1,37 +1,29 @@
-import { createContext, useState, ReactNode } from "react";
-import { theme as antdTheme } from "antd";
+// context/ThemeContext.tsx
+import { createContext, useState, useEffect } from "react";
 
-type Theme = "light" | "dark";
-
-type ThemeContextType = {
-    theme: Theme;
+interface ThemeContextType {
+    isDarkMode: boolean;
     toggleTheme: () => void;
-    themeConfig: any;
-};
+}
 
 export const ThemeContext = createContext<ThemeContextType | null>(null);
 
-export function ThemeProvider({ children }: { children: ReactNode }) {
-    const [theme, setTheme] = useState<Theme>("light");
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+    const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
+        const saved = localStorage.getItem("theme");
+        return saved === "dark";
+    });
 
     const toggleTheme = () => {
-        setTheme(prev => (prev === "light" ? "dark" : "light"));
+        setIsDarkMode((prev) => !prev);
     };
 
-    const themeConfig = {
-        algorithm:
-            theme === "dark"
-                ? antdTheme.darkAlgorithm
-                : antdTheme.defaultAlgorithm,
-
-        token: {
-            colorBgBase: theme === "dark" ? "#141414" : "#ffffff",
-            colorTextBase: theme === "dark" ? "#ffffff" : "#000000",
-        },
-    };
+    useEffect(() => {
+        localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+    }, [isDarkMode]);
 
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme, themeConfig }}>
+        <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
             {children}
         </ThemeContext.Provider>
     );

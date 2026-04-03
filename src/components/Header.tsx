@@ -1,65 +1,88 @@
-import { Link } from "react-router-dom";
-import { UserContext } from "../context/UserContext";
-import { ThemeContext } from "../context/ThemeContext";
+import { Link, useNavigate } from "react-router-dom";
+import { Button, Space, Avatar, Switch, message } from "antd";
+import { useAuthStore } from "../stores/useAuthStore";
 import { useContext } from "react";
-import { Button } from "antd";
-import Login from "./Login";
+import { ThemeContext } from "../context/ThemeContext";
 
 export default function Navbar() {
-    const context = useContext(UserContext);
-    const themeContext = useContext(ThemeContext);
+  const { user, logout } = useAuthStore();
+  const navigate = useNavigate();
 
-    if (!context || !themeContext) return null;
+  const themeContext = useContext(ThemeContext);
+  if (!themeContext) return null;
 
-    const { user, setUser } = context;
-    const { toggleTheme, theme } = themeContext;
+  const { isDarkMode, toggleTheme } = themeContext;
 
-    return (
-        <nav className="bg-blue-600 text-white shadow">
-            <div className="max-w-6xl mx-auto px-4 h-16 flex items-center">
+  const handleLogout = () => {
+    logout();
+    message.success("Đăng xuất thành công");
+    navigate("/");
+  };
 
-                {/* Logo */}
-                <Link to="#" className="text-xl font-semibold">
-                    <strong>WEB2091 App</strong>
-                </Link>
+  return (
+    <nav
+      className="shadow"
+      style={{
+        background: isDarkMode ? "#141414" : "#1677ff",
+        color: "#fff",
+      }}
+    >
+      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
 
-                {/* Menu */}
-                <div className="flex-1 flex justify-center items-center space-x-6">
-                    <Link to="#">Trang chủ</Link>
-                    <Link to="/list">Danh sách</Link>
-                    <Link to="/add">Thêm mới</Link>
-                </div>
+        {/* LEFT */}
+        <div className="flex items-center gap-6">
+          <Link to="/" className="text-xl font-semibold text-white">
+            WEB2091 App
+          </Link>
 
-                {/* RIGHT */}
-                <div className="flex items-center space-x-3 ml-auto">
+          <Link to="/" className="text-white">Trang chủ</Link>
+          <Link to="/lab5" className="text-white">Danh sách</Link>
+          <Link to="/lab4" className="text-white">Thêm mới</Link>
+        </div>
 
-                    {/* Toggle Theme */}
-                    <Button onClick={toggleTheme}>
-                        {theme === "dark" ? "🌞" : "🌙"}
-                    </Button>
+        {/* RIGHT */}
+        <Space>
+          <Switch
+            checked={isDarkMode}
+            onChange={toggleTheme}
+            checkedChildren="Tối"
+            unCheckedChildren="Sáng"
+          />
 
-                    {/* Login */}
-                    {!user && <Login />}
+          {user ? (
+            <>
+              <Avatar>
+                {user.email.charAt(0).toUpperCase()}
+              </Avatar>
 
-                    {/* User */}
-                    {user && (
-                        <>
-                            <div className="flex items-center space-x-2">
-                                <img
-                                    src={user.avatar}
-                                    alt="avatar"
-                                    className="h-8 w-8 rounded-full border"
-                                />
-                                <span>{user.name}</span>
-                            </div>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <span style={{ color: "#fff" }}>
+                  Hi, {user.email}
+                </span>
+                <span style={{ fontSize: "0.8rem", color: "#52c41a" }}>
+                  Đã đăng nhập
+                </span>
+              </div>
 
-                            <Button danger onClick={() => setUser(null)}>
-                                Logout
-                            </Button>
-                        </>
-                    )}
-                </div>
-            </div>
-        </nav>
-    );
+              <Button danger onClick={handleLogout}>
+                Logout
+              </Button>
+            </>
+          ) : (
+            <>
+              <span style={{ color: "#fff" }}>Chưa đăng nhập</span>
+
+              <Link to="/login">
+                <Button>Login</Button>
+              </Link>
+
+              <Link to="/register">
+                <Button type="primary">Register</Button>
+              </Link>
+            </>
+          )}
+        </Space>
+      </div>
+    </nav>
+  );
 }
