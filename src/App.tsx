@@ -9,11 +9,11 @@ import Lab2 from "./pages/Lab2";
 import Lab3 from "./pages/Lab3";
 import StoryForm from "./pages/Lab4";
 import StoryList from "./pages/Lab5";
-import EditStory from "./pages/Lab6";
 import Navbar from "./components/Header";
 
 import { ThemeContext } from "./context/ThemeContext";
 import Register from "./pages/Register";
+import { EditStory } from "./pages/Lab6";
 
 const { Header, Content, Footer } = Layout;
 

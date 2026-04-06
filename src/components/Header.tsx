@@ -52,12 +52,12 @@ export default function Navbar() {
           {user ? (
             <>
               <Avatar>
-                {user.email.charAt(0).toUpperCase()}
+                {user.email ? user.email.charAt(0).toUpperCase() : "U"}
               </Avatar>
 
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <span style={{ color: "#fff" }}>
-                  Hi, {user.email}
+                  Hi, {user.email || user.name || "Người dùng"}
                 </span>
                 <span style={{ fontSize: "0.8rem", color: "#52c41a" }}>
                   Đã đăng nhập
